@@ -1,0 +1,23 @@
+services:
+   main:
+      build: .
+      hostname: oshergaylol
+      ports:
+      - "5000:5000"
+      networks:
+         - app-net
+   db:
+      image: postgres
+      environment:
+         - POSTGRES_USER=Tal
+         - POSTGRES_PASSWORD=123
+         - POSTGRES_DB=mydatabase
+      volumes:
+         - postgres-data:/var/lib/postgresql/data
+      networks:
+         - app-net
+
+networks:
+   app-net:
+volumes:
+   postgres-data:
